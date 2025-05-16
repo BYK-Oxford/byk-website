@@ -3,6 +3,8 @@ import React from "react";
 import Hero from "@/app/home/components/hero";
 import Stats from "@/app/home/components/stats";
 import Screen from "@/app/home/components/screen";
+import Grid from "@/app/home/components/grid";
+import Contact from "@/app/home/components/contact";
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       <Hero />
       <Stats/>
       <Screen/>
+      <Grid/>
+      <Contact/>
     </div>
   );
 }

@@ -59,7 +59,7 @@ export default function Screen() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <img
             alt="App screenshot"
-            src="https://tailwindcss.com/plus-assets/img/component-images/project-app-screenshot.png"
+            src="https://www.newhorizons.com/Portals/2/power-bi-service-dashboard-sm.png"
             width={2432}
             height={1442}
             className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
