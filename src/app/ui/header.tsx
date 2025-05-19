@@ -1,30 +1,29 @@
-'use client'
-import Link from 'next/link'
-import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { Dialog, DialogPanel } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'FAQ', href: '/faq' },
-  { name: 'Contact', href: '/contact' },
-]
+  { name: "Home", href: "/home" },
+  { name: "About", href: "/about" },
+  { name: "FAQ", href: "/faq" },
+  { name: "Contact", href: "/contact" },
+];
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white">
-      <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
+    <header className="bg-transparent relative z-50">
+      <nav
+        aria-label="Global"
+        className="flex items-center justify-between p-6 lg:px-8"
+      >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img
-              alt=""
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-              className="h-8 w-auto"
-            />
+          <a href="/home" className="-m-1.5 p-1.5">
+            <span className="sr-only">BYK Oxford</span>
+            <img alt="BYK Oxford" src="/logo.png" className="h-15 w-auto" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -39,23 +38,30 @@ export default function Header() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <Link key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-sm/6 font-semibold text-gray-900"
+            >
               {item.name}
             </Link>
           ))}
         </div>
-        
       </nav>
-      <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+      <Dialog
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+        className="lg:hidden"
+      >
         <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <DialogPanel className="fixed inset-y-0 right-0 z-80 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <Link href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+            <Link href="/home" className="-m-1.5 p-1.5">
+              <span className="sr-only">BYK Oxford</span>
               <img
-                alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
+                alt="BYK Oxford Logo"
+                src="/logo.png"
+                className="h-15 w-auto"
               />
             </Link>
             <button
@@ -80,11 +86,10 @@ export default function Header() {
                   </Link>
                 ))}
               </div>
-              
             </div>
           </div>
         </DialogPanel>
       </Dialog>
     </header>
-  )
+  );
 }
