@@ -51,7 +51,7 @@ export default function CEO() {
       <div className="mx-auto max-w-2xl lg:max-w-4xl">
         {/* <img alt="BYK Oxford Logo" src="/logo.png" className="mx-auto h-12" /> */}
         <figure className="mt-10">
-          <blockquote className="text-center text-xl/8  text-gray-900 sm:text-2xl/9">
+          <blockquote className="text-center text-xl/6  text-gray-900 sm:text-xl/9">
             <p>
               “Building this company has been one of the most rewarding journeys
               of my life. Every challenge has taught me the value of resilience,

@@ -7,7 +7,7 @@ export default function About() {
   return (
     <div className="bg-white">
       <Hero />
-      <Abouts />
+
       <Timeline />
       <CEO />
     </div>
