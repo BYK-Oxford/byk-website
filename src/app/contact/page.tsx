@@ -1,6 +1,6 @@
 export default function Contact() {
   return (
-    <div className="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="relative isolate bg-white px-6 py-10 sm:py-32 lg:px-8">
       <svg
         aria-hidden="true"
         className="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-gray-200"
@@ -142,13 +142,8 @@ export default function Contact() {
             </p>
           </form>
           <div className="lg:mt-6 lg:w-80 lg:flex-none">
-            {/* <img
-              alt=""
-              src="https://tailwindcss.com/plus-assets/img/logos/workcation-logo-indigo-600.svg"
-              className="h-12 w-auto"
-            /> */}
             <figure className="mt-10">
-              <blockquote className="text-lg/8 font-semibold text-gray-900">
+              <blockquote className="text-lg/8 text-gray-900">
                 <p>
                   “We don’t just balance books — we build confidence. At BYK
                   Oxford, we’re committed to guiding you through every financial
