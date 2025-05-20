@@ -10,7 +10,7 @@ export default function Hero() {
               className="size-full object-cover"
             />
             {/* <div className="absolute inset-0 bg-blue-700 mix-blend-multiply" /> */}
-            <div className="absolute inset-0 bg-neutral-900/80" />
+            <div className="absolute inset-0 bg-indigo-900/60" />
           </div>
           <div className="relative px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
             <h1 className="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
