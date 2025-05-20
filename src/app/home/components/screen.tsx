@@ -5,53 +5,61 @@ import {
   FingerPrintIcon,
   LockClosedIcon,
   ClockIcon,
-} from '@heroicons/react/20/solid'
+} from "@heroicons/react/20/solid";
 
 const features = [
   {
-    name: 'Fast Performance',
-    description: 'Optimized dashboards that load quickly, even with large datasets — no delays, just insights.',
+    name: "Fast Performance",
+    description:
+      "Optimized dashboards that load quickly, even with large datasets — no delays, just insights.",
     icon: CloudArrowUpIcon,
   },
   {
-    name: 'Low Load Time',
-    description: 'Clean data models and backend tuning ensure dashboards open in seconds, not minutes.',
+    name: "Low Load Time",
+    description:
+      "Clean data models and backend tuning ensure dashboards open in seconds, not minutes.",
     icon: ArrowPathIcon,
   },
   {
-    name: 'Custom Reporting',
-    description: 'Tailored dashboards built around your KPIs — from cash flow to expense breakdowns.',
+    name: "Custom Reporting",
+    description:
+      "Tailored dashboards built around your KPIs — from cash flow to expense breakdowns.",
     icon: Cog6ToothIcon,
   },
   {
-    name: 'Data Accuracy',
-    description: 'Reliable and precise calculations ensure your reports reflect the real financial picture.',
+    name: "Data Accuracy",
+    description:
+      "Reliable and precise calculations ensure your reports reflect the real financial picture.",
     icon: FingerPrintIcon,
   },
   {
-    name: 'Scheduled Refresh',
-    description: 'Automated data updates at regular intervals so you always have up-to-date information.',
-    icon: ClockIcon, 
+    name: "Scheduled Refresh",
+    description:
+      "Automated data updates at regular intervals so you always have up-to-date information.",
+    icon: ClockIcon,
   },
   {
-    name: 'Secure Access',
-    description: 'Role-based permissions and SSL encryption ensure your data stays safe and private.',
+    name: "Secure Access",
+    description:
+      "Role-based permissions and SSL encryption ensure your data stays safe and private.",
     icon: LockClosedIcon,
   },
-]
-
+];
 
 export default function Screen() {
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-base/7 font-semibold text-indigo-600">Real-Time Business Insights</h2>
+          <h2 className="text-base/7 font-semibold text-indigo-600">
+            Real-Time Business Insights
+          </h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl sm:text-balance">
             Smart Reports, Smarter Decisions.
           </p>
           <p className="mt-6 text-lg/8 text-gray-600">
-            Our Power BI dashboards turn complex financial data into clear, actionable insights — helping you stay ahead and in control.
+            Our Power BI dashboards turn complex financial data into clear,
+            actionable insights — helping you stay ahead and in control.
           </p>
         </div>
       </div>
@@ -71,17 +79,19 @@ export default function Screen() {
       </div>
       <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
         <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-          {features.map((feature) => (
-            <div key={feature.name} className="relative pl-9">
-              <dt className="inline font-semibold text-gray-900">
-                <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-indigo-600" />
-                {feature.name}
-              </dt>{' '}
-              <dd className="inline">{feature.description}</dd>
+          {features.map((value) => (
+            <div key={value.name}>
+              <dt className="flex items-center gap-2">
+                <value.icon className="h-6 w-6 text-indigo-600" />
+                <span className="font-semibold text-gray-900">
+                  {value.name}
+                </span>
+              </dt>
+              <dd className="mt-2 text-gray-600">{value.description}</dd>
             </div>
           ))}
         </dl>
       </div>
     </div>
-  )
+  );
 }

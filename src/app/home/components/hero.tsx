@@ -43,7 +43,7 @@ export default function Hero() {
         />
       </div>
       <div className="overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 pt-36 pb-32 sm:pt-60 lg:px-8 lg:pt-32">
+        <div className="mx-auto max-w-7xl px-6 pt-10 pb-32 sm:pt-60 lg:px-8 lg:pt-10">
           <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
               <div className="flex flex-col gap-8">
