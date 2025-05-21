@@ -48,34 +48,31 @@ const values = [
 
 export default function Values() {
   return (
-    <>
-      <div className="mx-auto mt-32 items-center max-w-7xl px-6 sm:mt-40 lg:px-8">
-        <div className="flex items-center justify-center px-6">
-          <div className="text-center max-w-2xl">
-            <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl">
-              Our values
-            </h2>
-            <p className="mt-6 text-md/8 text-gray-600">
-              At the heart of our work is a commitment to accuracy, trust, and
-              partnership. We strive to deliver financial clarity and confidence
-              through ethical practices, expert insight, and tailored support.
-            </p>
-          </div>
-        </div>
-        <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base/7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {values.map((value) => (
-            <div key={value.name}>
-              <dt className="flex items-center gap-2">
-                <value.icon className="h-6 w-6 text-indigo-600" />
-                <span className="font-semibold text-gray-900">
-                  {value.name}
-                </span>
-              </dt>
-              <dd className="mt-2 text-gray-600">{value.description}</dd>
-            </div>
-          ))}
-        </dl>
+    <div className="mx-auto mt-10 max-w-7xl px-6 sm:mt-10 sm:mb-20 lg:px-8">
+      <div className="max-w-2xl mx-auto text-center">
+        <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
+          Our values
+        </h2>
+        <p className="mt-4 text-base text-gray-600 sm:text-lg max-w-xl mx-auto">
+          At the heart of our work is a commitment to accuracy, trust, and
+          partnership. We strive to deliver financial clarity and confidence
+          through ethical practices, expert insight, and tailored support.
+        </p>
       </div>
-    </>
+
+      <dl className="mt-16 grid px-20 max-w-2xl grid-cols-1 gap-x-8 gap-y-12 text-base text-gray-700 sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
+        {values.map((value) => (
+          <div key={value.name} className="flex flex-col">
+            <dt className="flex items-center gap-3">
+              <value.icon className="h-6 w-6 text-indigo-600 flex-shrink-0" />
+              <span className="font-semibold text-gray-900">{value.name}</span>
+            </dt>
+            <dd className="mt-2 text-sm leading-relaxed">
+              {value.description}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
   );
 }
