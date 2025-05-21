@@ -48,46 +48,50 @@ const features = [
 
 export default function Screen() {
   return (
-    <div className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-base/7 font-semibold text-indigo-600">
+    <div className="bg-white py-12 sm:py-16">
+      <div className="mx-auto max-w-5xl px-4 lg:px-6">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="text-sm font-semibold text-indigo-600">
             Real-Time Business Insights
           </h2>
-          <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl sm:text-balance">
+          <p className="mt-2 text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
             Smart Reports, Smarter Decisions.
           </p>
-          <p className="mt-6 text-lg/8 text-gray-600">
+          <p className="mt-4 text-base text-gray-600">
             Our Power BI dashboards turn complex financial data into clear,
             actionable insights — helping you stay ahead and in control.
           </p>
         </div>
       </div>
-      <div className="relative overflow-hidden pt-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+      <div className="relative overflow-hidden pt-10">
+        <div className="mx-auto max-w-5xl px-4 lg:px-6">
           <img
             alt="App screenshot"
             src="https://www.newhorizons.com/Portals/2/power-bi-service-dashboard-sm.png"
-            width={2432}
-            height={1442}
-            className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+            width={1200}
+            height={720}
+            className="rounded-lg shadow-lg ring-1 ring-gray-200"
           />
-          <div aria-hidden="true" className="relative">
-            <div className="absolute -inset-x-20 bottom-0 bg-linear-to-t from-white pt-[7%]" />
-          </div>
+          {/* Gradient fade at bottom */}
+          <div
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 right-0 h-50 bg-gradient-to-t from-white to-transparent"
+          />
         </div>
       </div>
-      <div className="mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8">
-        <dl className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 text-base/7 text-gray-600 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
+
+      <div className="mx-auto mt-12 max-w-5xl px-4 lg:px-6">
+        <dl className="grid grid-cols-1 gap-x-4 gap-y-8 text-sm text-gray-600 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((value) => (
             <div key={value.name}>
               <dt className="flex items-center gap-2">
-                <value.icon className="h-6 w-6 text-indigo-600" />
+                <value.icon className="h-5 w-5 text-indigo-600" />
                 <span className="font-semibold text-gray-900">
                   {value.name}
                 </span>
               </dt>
-              <dd className="mt-2 text-gray-600">{value.description}</dd>
+              <dd className="mt-1 text-gray-600">{value.description}</dd>
             </div>
           ))}
         </dl>
