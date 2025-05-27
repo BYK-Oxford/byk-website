@@ -4,6 +4,11 @@ import {
   EnvelopeIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
@@ -31,6 +36,74 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 };
 
 export default function Contact() {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const paragraphRef = useRef<HTMLParagraphElement>(null);
+  const infoItemsRef = useRef<HTMLDListElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (
+      !headingRef.current ||
+      !paragraphRef.current ||
+      !infoItemsRef.current ||
+      !formRef.current
+    )
+      return;
+
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.out" },
+      scrollTrigger: {
+        trigger: headingRef.current,
+        start: "top 80%", // When top of heading hits 80% of viewport height
+        toggleActions: "play none none none", // play once on enter
+      },
+    });
+
+    tl.from(headingRef.current, {
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+    }).from(
+      paragraphRef.current,
+      {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+      },
+      "-=0.4"
+    );
+
+    const items = infoItemsRef.current.querySelectorAll("div.flex.gap-x-3");
+    tl.from(
+      items,
+      {
+        x: -30,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.2,
+      },
+      "-=0.3"
+    );
+
+    const formElements = formRef.current.querySelectorAll(
+      "label, input, textarea, button"
+    );
+    tl.from(
+      formElements,
+      {
+        x: 30,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+      },
+      "-=0.6"
+    );
+
+    return () => {
+      // Clean up ScrollTrigger instances on unmount
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
   return (
     <div className="relative isolate bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
@@ -65,15 +138,21 @@ export default function Contact() {
                 />
               </svg>
             </div>
-            <h2 className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl">
+            <h2
+              ref={headingRef}
+              className="text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl"
+            >
               Get in touch
             </h2>
-            <p className="mt-5 text-base/7 text-gray-600">
+            <p ref={paragraphRef} className="mt-5 text-base/7 text-gray-600">
               Have questions or need tailored financial solutions? Our team is
               here to help. Reach out to discover how we can support your
               business growth and clarity.
             </p>
-            <dl className="mt-8 space-y-3 text-sm/6 text-gray-600">
+            <dl
+              ref={infoItemsRef}
+              className="mt-8 space-y-3 text-sm/6 text-gray-600"
+            >
               <div className="flex gap-x-3">
                 <dt className="flex-none">
                   <span className="sr-only">Address</span>
@@ -126,6 +205,7 @@ export default function Contact() {
           </div>
         </div>
         <form
+          ref={formRef}
           onSubmit={handleSubmit}
           className="px-5 pt-16 pb-20 sm:pb-24 lg:px-20 lg:py-36"
         >
