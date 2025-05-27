@@ -1,6 +1,80 @@
+"use client";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Grid() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    // Animate heading
+    gsap.fromTo(
+      containerRef.current.querySelector("h2"),
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: containerRef.current.querySelector("h2"),
+          start: "top 90%",
+          once: true,
+        },
+      }
+    );
+
+    // Animate paragraph
+    gsap.fromTo(
+      containerRef.current.querySelector("p"),
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: containerRef.current.querySelector("p"),
+          start: "top 90%",
+          once: true,
+        },
+      }
+    );
+
+    // Animate each card (grid children of .grid container)
+    const cards = containerRef.current.querySelectorAll(".grid > div");
+
+    cards.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          delay: 0.1 + index * 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            once: true,
+          },
+        }
+      );
+    });
+
+    // Cleanup function to kill ScrollTriggers on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
   return (
-    <div className="bg-gray-50 py-20 sm:py-26">
+    <div className="bg-gray-50 py-20 sm:py-26" ref={containerRef}>
       <div className="mx-auto max-w-[1600px] px-5 lg:max-w-[5600px] lg:px-6">
         <h2 className="text-center text-base/7 font-semibold text-indigo-600">
           Power in Every Report

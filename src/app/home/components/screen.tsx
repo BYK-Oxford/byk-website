@@ -1,3 +1,8 @@
+"use client";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import {
   ArrowPathIcon,
   CloudArrowUpIcon,
@@ -6,6 +11,8 @@ import {
   LockClosedIcon,
   ClockIcon,
 } from "@heroicons/react/20/solid";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
@@ -47,10 +54,74 @@ const features = [
 ];
 
 export default function Screen() {
+  const headingRef = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    // Animate heading
+    if (headingRef.current) {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Animate image
+    if (imageRef.current) {
+      gsap.fromTo(
+        imageRef.current,
+        { opacity: 0, scale: 0.95 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: imageRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Animate feature items
+    featureRefs.current.forEach((el, index) => {
+      if (el) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: index * 0.1,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    });
+  }, []);
+
   return (
     <div className="bg-white py-12 sm:py-16">
       <div className="mx-auto max-w-5xl px-4 lg:px-6">
-        <div className="mx-auto max-w-xl text-center">
+        <div className="mx-auto max-w-xl text-center" ref={headingRef}>
           <h2 className="text-sm font-semibold text-indigo-600">
             Real-Time Business Insights
           </h2>
@@ -72,8 +143,8 @@ export default function Screen() {
             width={1200}
             height={720}
             className="rounded-lg shadow-lg ring-1 ring-gray-200"
+            ref={imageRef}
           />
-          {/* Gradient fade at bottom */}
           <div
             aria-hidden="true"
             className="absolute bottom-0 left-0 right-0 h-50 bg-gradient-to-t from-white to-transparent"
@@ -83,8 +154,13 @@ export default function Screen() {
 
       <div className="mx-auto mt-12 max-w-5xl px-4 lg:px-6">
         <dl className="grid grid-cols-1 gap-x-4 gap-y-8 text-sm text-gray-600 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((value) => (
-            <div key={value.name}>
+          {features.map((value, index) => (
+            <div
+              key={value.name}
+              ref={(el) => {
+                featureRefs.current[index] = el;
+              }}
+            >
               <dt className="flex items-center gap-2">
                 <value.icon className="h-5 w-5 text-indigo-600" />
                 <span className="font-semibold text-gray-900">
