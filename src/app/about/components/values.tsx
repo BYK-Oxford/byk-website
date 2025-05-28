@@ -1,3 +1,7 @@
+"use client";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ShieldCheckIcon,
   UserGroupIcon,
@@ -6,6 +10,8 @@ import {
   EyeSlashIcon,
   UserIcon,
 } from "@heroicons/react/20/solid";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const values = [
   {
@@ -47,9 +53,53 @@ const values = [
 ];
 
 export default function Values() {
+  const headingRef = useRef<HTMLDivElement | null>(null);
+  const valueRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    // Animate heading
+    if (headingRef.current) {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Animate each value card
+    valueRefs.current.forEach((el, index) => {
+      if (el) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: index * 0.1,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    });
+  }, []);
+
   return (
     <div className="mx-auto mt-10 max-w-7xl px-6 sm:mt-10 sm:mb-20 lg:px-8">
-      <div className="max-w-2xl mx-auto text-center">
+      <div className="max-w-2xl mx-auto text-center" ref={headingRef}>
         <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
           Our values
         </h2>
@@ -61,8 +111,14 @@ export default function Values() {
       </div>
 
       <dl className="mt-16 grid px-20 max-w-2xl grid-cols-1 gap-x-8 gap-y-12 text-base text-gray-700 sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
-        {values.map((value) => (
-          <div key={value.name} className="flex flex-col">
+        {values.map((value, index) => (
+          <div
+            key={value.name}
+            className="flex flex-col"
+            ref={(el) => {
+              valueRefs.current[index] = el;
+            }}
+          >
             <dt className="flex items-center gap-3">
               <value.icon className="h-6 w-6 text-indigo-600 flex-shrink-0" />
               <span className="font-semibold text-gray-900">{value.name}</span>
