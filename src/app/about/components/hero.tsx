@@ -1,4 +1,40 @@
+"use client";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
+  const headingRef = useRef(null);
+  const subHeadingRef = useRef(null);
+  const paraRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: headingRef.current,
+        start: "top 80%",
+      },
+    });
+
+    tl.fromTo(
+      headingRef.current,
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+    )
+      .fromTo(
+        subHeadingRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        "-=0.5"
+      )
+      .fromTo(
+        paraRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        "-=0.5"
+      );
+  }, []);
   return (
     <div className="relative">
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -12,13 +48,22 @@ export default function Hero() {
             <div className="absolute inset-0 bg-indigo-900/60" />
           </div>
           <div className="relative px-6 py-12 sm:py-20 lg:px-12 lg:py-28 text-center">
-            <h1 className="text-white font-extrabold tracking-tight text-3xl sm:text-4xl lg:text-5xl">
+            <h1
+              ref={headingRef}
+              className="text-white font-extrabold tracking-tight text-3xl sm:text-4xl lg:text-5xl"
+            >
               <span className="block">About Us</span>
-              <span className="block text-indigo-200 mt-1 text-xl sm:text-2xl lg:text-3xl">
+              <span
+                ref={subHeadingRef}
+                className="block text-indigo-200 mt-1 text-xl sm:text-2xl lg:text-3xl"
+              >
                 Your financial Partner
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-indigo-200 text-sm sm:text-base lg:text-lg">
+            <p
+              ref={paraRef}
+              className="mx-auto mt-6 max-w-xl text-indigo-200 text-sm sm:text-base lg:text-lg"
+            >
               We’re a modern accounting firm helping businesses and individuals
               stay ahead financially. With data-driven insights and tailored
               strategies, we simplify the complex and give you clarity where it

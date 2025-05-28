@@ -11,7 +11,7 @@ export default function Hero() {
   const buttonRef = useRef<HTMLAnchorElement | null>(null);
 
   // ref for images array
-  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     if (headingRef.current) {
@@ -22,6 +22,7 @@ export default function Hero() {
           opacity: 1,
           y: 0,
           duration: 0.8,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: headingRef.current,
             start: "top 85%",
@@ -40,6 +41,7 @@ export default function Hero() {
           y: 0,
           duration: 0.8,
           delay: 0.1,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: paragraphRef.current,
             start: "top 85%",
@@ -58,6 +60,7 @@ export default function Hero() {
           y: 0,
           duration: 0.8,
           delay: 0.2,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: buttonRef.current,
             start: "top 95%",
@@ -161,11 +164,13 @@ export default function Hero() {
 
             <div className="mt-5 flex justify-end gap-8 sm:-mt-10 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
               <div className="ml-auto w-40 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
-                <div className="relative">
+                <div
+                  ref={(el) => {
+                    imageRefs.current[0] = el;
+                  }}
+                  className="relative"
+                >
                   <img
-                    ref={(el) => {
-                      imageRefs.current[0] = el;
-                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -174,22 +179,26 @@ export default function Hero() {
                 </div>
               </div>
               <div className="mr-auto w-40 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
-                <div className="relative">
+                <div
+                  ref={(el) => {
+                    imageRefs.current[1] = el;
+                  }}
+                  className="relative"
+                >
                   <img
-                    ref={(el) => {
-                      imageRefs.current[1] = el;
-                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset" />
                 </div>
-                <div className="relative">
+                <div
+                  ref={(el) => {
+                    imageRefs.current[2] = el;
+                  }}
+                  className="relative"
+                >
                   <img
-                    ref={(el) => {
-                      imageRefs.current[2] = el;
-                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -198,22 +207,26 @@ export default function Hero() {
                 </div>
               </div>
               <div className="w-40 flex-none space-y-8 pt-32 sm:pt-0">
-                <div className="relative">
+                <div
+                  ref={(el) => {
+                    imageRefs.current[3] = el;
+                  }}
+                  className="relative"
+                >
                   <img
-                    ref={(el) => {
-                      imageRefs.current[3] = el;
-                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 ring-inset" />
                 </div>
-                <div className="relative">
+                <div
+                  ref={(el) => {
+                    imageRefs.current[4] = el;
+                  }}
+                  className="relative"
+                >
                   <img
-                    ref={(el) => {
-                      imageRefs.current[4] = el;
-                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
