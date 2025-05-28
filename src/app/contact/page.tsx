@@ -1,4 +1,126 @@
+"use client";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Contact() {
+  const headingRef = useRef<HTMLDivElement | null>(null);
+  const paraRef = useRef<HTMLDivElement | null>(null);
+  const headingRef1 = useRef<HTMLDivElement | null>(null);
+  const paraRef1 = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    // Animate heading
+    if (headingRef.current) {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    if (paraRef.current) {
+      gsap.fromTo(
+        paraRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    if (headingRef1.current) {
+      gsap.fromTo(
+        headingRef1.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: headingRef1.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    if (paraRef1.current) {
+      gsap.fromTo(
+        paraRef1.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: headingRef1.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Animate image
+    if (imageRef.current) {
+      gsap.fromTo(
+        imageRef.current,
+        { opacity: 0, scale: 0.95 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: imageRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Animate form fields
+    if (formRef.current) {
+      const fields = formRef.current.querySelectorAll(
+        "label, input, textarea, button"
+      );
+      gsap.fromTo(
+        fields,
+        { opacity: 0, y: 10 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+  }, []);
   return (
     <div className="relative isolate bg-white px-6 py-10 sm:py-32 lg:px-8">
       <svg
@@ -31,15 +153,18 @@ export default function Contact() {
         />
       </svg>
       <div className="mx-auto max-w-xl lg:max-w-4xl">
-        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+        <h2
+          ref={headingRef1}
+          className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl"
+        >
           Let’s talk about your project
         </h2>
-        <p className="mt-6 text-lg/8 text-gray-600">
+        <p ref={paraRef1} className="mt-6 text-lg/8 text-gray-600">
           From startups to established businesses <br />— we’re here to simplify
           your finances and support your growth.
         </p>
         <div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
-          <form action="#" method="POST" className="lg:flex-auto">
+          <form ref={formRef} action="#" method="POST" className="lg:flex-auto">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div>
                 <label
@@ -144,7 +269,7 @@ export default function Contact() {
           <div className="lg:mt-6 lg:w-80 lg:flex-none">
             <figure className="mt-10">
               <blockquote className="text-lg/8 text-gray-900">
-                <p>
+                <p ref={headingRef}>
                   “We don’t just balance books — we build confidence. At BYK
                   Oxford, we’re committed to guiding you through every financial
                   step with clarity and care.”
@@ -152,11 +277,12 @@ export default function Contact() {
               </blockquote>
               <figcaption className="mt-10 flex gap-x-6">
                 <img
+                  ref={imageRef}
                   alt="CEO Image"
                   src="https://media.licdn.com/dms/image/v2/D4E03AQHIsWb4wu_gXg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1680788661265?e=1753315200&v=beta&t=L9_UIY_59hPU_6XP5h4BT8b0x_oo_vUxodCfeMnmuSU"
                   className="size-12 flex-none rounded-full bg-gray-50"
                 />
-                <div>
+                <div ref={paraRef}>
                   <div className="text-base font-semibold text-gray-900">
                     Burak Yilmazkaya
                   </div>
