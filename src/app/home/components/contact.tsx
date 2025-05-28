@@ -10,6 +10,44 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const contactInfos = [
+  {
+    id: 1,
+    icon: BuildingOffice2Icon,
+    label: "Address",
+    value: (
+      <>
+        128 City Road
+        <br />
+        London, EC1V 2NX
+      </>
+    ),
+  },
+  {
+    id: 2,
+    icon: PhoneIcon,
+    label: "Telephone",
+    value: (
+      <a href="tel:+447828994591" className="hover:text-gray-900">
+        +44 7828 994591
+      </a>
+    ),
+  },
+  {
+    id: 3,
+    icon: EnvelopeIcon,
+    label: "Email",
+    value: (
+      <a
+        href="mailto:burry.yilmazkaya@bykoxford.com"
+        className="hover:text-gray-900"
+      >
+        burry.yilmazkaya@bykoxford.com
+      </a>
+    ),
+  },
+];
+
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   const form = e.target as HTMLFormElement;
@@ -36,73 +74,87 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 };
 
 export default function Contact() {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const paragraphRef = useRef<HTMLParagraphElement>(null);
-  const infoItemsRef = useRef<HTMLDListElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const paragraphRef = useRef<HTMLParagraphElement | null>(null);
+  const infoRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   useEffect(() => {
-    if (
-      !headingRef.current ||
-      !paragraphRef.current ||
-      !infoItemsRef.current ||
-      !formRef.current
-    )
-      return;
+    if (headingRef.current) {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    if (formRef.current) {
+      const inputs = formRef.current.querySelectorAll(
+        "input, textarea, label, button"
+      );
 
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.out" },
-      scrollTrigger: {
-        trigger: headingRef.current,
-        start: "top 80%", // When top of heading hits 80% of viewport height
-        toggleActions: "play none none none", // play once on enter
-      },
+      gsap.fromTo(
+        inputs,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    if (paragraphRef.current) {
+      gsap.fromTo(
+        paragraphRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 0.1,
+          scrollTrigger: {
+            trigger: paragraphRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    infoRefs.current.forEach((el, index) => {
+      if (el) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.1,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
     });
-
-    tl.from(headingRef.current, {
-      y: 20,
-      opacity: 0,
-      duration: 0.6,
-    }).from(
-      paragraphRef.current,
-      {
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-      },
-      "-=0.4"
-    );
-
-    const items = infoItemsRef.current.querySelectorAll("div.flex.gap-x-3");
-    tl.from(
-      items,
-      {
-        x: -30,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.2,
-      },
-      "-=0.3"
-    );
-
-    const formElements = formRef.current.querySelectorAll(
-      "label, input, textarea, button"
-    );
-    tl.from(
-      formElements,
-      {
-        x: 30,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.1,
-      },
-      "-=0.6"
-    );
-
-    return () => {
-      // Clean up ScrollTrigger instances on unmount
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
   }, []);
   return (
     <div className="relative isolate bg-white">
@@ -149,58 +201,25 @@ export default function Contact() {
               here to help. Reach out to discover how we can support your
               business growth and clarity.
             </p>
-            <dl
-              ref={infoItemsRef}
-              className="mt-8 space-y-3 text-sm/6 text-gray-600"
-            >
-              <div className="flex gap-x-3">
-                <dt className="flex-none">
-                  <span className="sr-only">Address</span>
-                  <BuildingOffice2Icon
-                    aria-hidden="true"
-                    className="h-5 w-4 text-gray-400"
-                  />
-                </dt>
-                <dd className="text-sm leading-tight">
-                  128 City Road
-                  <br />
-                  London, EC1V 2NX
-                </dd>
-              </div>
-              <div className="flex gap-x-3">
-                <dt className="flex-none">
-                  <span className="sr-only">Telephone</span>
-                  <PhoneIcon
-                    aria-hidden="true"
-                    className="h-5 w-4 text-gray-400"
-                  />
-                </dt>
-                <dd className="text-sm leading-tight">
-                  <a
-                    href="tel:+1 (555) 234-5678"
-                    className="hover:text-gray-900"
-                  >
-                    +44 7828 994591
-                  </a>
-                </dd>
-              </div>
-              <div className="flex gap-x-3">
-                <dt className="flex-none">
-                  <span className="sr-only">Email</span>
-                  <EnvelopeIcon
-                    aria-hidden="true"
-                    className="h-5 w-4 text-gray-400"
-                  />
-                </dt>
-                <dd className="text-sm leading-tight">
-                  <a
-                    href="mailto:burry.yilmazkaya@bykoxford.com"
-                    className="hover:text-gray-900"
-                  >
-                    burry.yilmazkaya@bykoxford.com
-                  </a>
-                </dd>
-              </div>
+            <dl className="mt-8 space-y-3 text-sm/6 text-gray-600">
+              {contactInfos.map(({ id, icon: Icon, label, value }, index) => (
+                <div
+                  key={id}
+                  ref={(el) => {
+                    infoRefs.current[index] = el;
+                  }}
+                  className="flex gap-x-3"
+                >
+                  <dt className="flex-none">
+                    <span className="sr-only">{label}</span>
+                    <Icon
+                      aria-hidden="true"
+                      className="h-5 w-4 text-gray-400"
+                    />
+                  </dt>
+                  <dd className="text-sm leading-tight">{value}</dd>
+                </div>
+              ))}
             </dl>
           </div>
         </div>

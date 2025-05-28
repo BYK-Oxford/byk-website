@@ -1,46 +1,93 @@
 "use client";
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
-  const headingRef = useRef(null);
-  const paragraphRef = useRef(null);
-  const buttonRef = useRef(null);
-  const imageGroupRef = useRef(null);
+  // refs for text elements
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const paragraphRef = useRef<HTMLParagraphElement | null>(null);
+  const buttonRef = useRef<HTMLAnchorElement | null>(null);
+
+  // ref for images array
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
   useEffect(() => {
-    gsap.from(headingRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      delay: 0.2,
-      ease: "power3.out",
-    });
+    if (headingRef.current) {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
 
-    gsap.from(paragraphRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      delay: 0.4,
-      ease: "power3.out",
-    });
+    if (paragraphRef.current) {
+      gsap.fromTo(
+        paragraphRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 0.1,
+          scrollTrigger: {
+            trigger: paragraphRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
 
-    gsap.from(buttonRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      delay: 0.6,
-      ease: "power3.out",
-    });
+    if (buttonRef.current) {
+      gsap.fromTo(
+        buttonRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: buttonRef.current,
+            start: "top 95%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
 
-    gsap.from(imageGroupRef.current, {
-      opacity: 0,
-      y: 30,
-      duration: 1.2,
-      delay: 0.8,
-      ease: "power2.out",
+    imageRefs.current.forEach((img, index) => {
+      if (img) {
+        gsap.fromTo(
+          img,
+          { opacity: 0, y: 30, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            delay: index * 0.15,
+            scrollTrigger: {
+              trigger: img,
+              start: "top 95%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
     });
   }, []);
-
   return (
     <div className="relative isolate z-10">
       <svg
@@ -112,13 +159,13 @@ export default function Hero() {
               </div>
             </div>
 
-            <div
-              ref={imageGroupRef}
-              className="mt-5 flex justify-end gap-8 sm:-mt-10 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0"
-            >
+            <div className="mt-5 flex justify-end gap-8 sm:-mt-10 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
               <div className="ml-auto w-40 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
                 <div className="relative">
                   <img
+                    ref={(el) => {
+                      imageRefs.current[0] = el;
+                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -129,6 +176,9 @@ export default function Hero() {
               <div className="mr-auto w-40 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
                 <div className="relative">
                   <img
+                    ref={(el) => {
+                      imageRefs.current[1] = el;
+                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -137,6 +187,9 @@ export default function Hero() {
                 </div>
                 <div className="relative">
                   <img
+                    ref={(el) => {
+                      imageRefs.current[2] = el;
+                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -147,6 +200,9 @@ export default function Hero() {
               <div className="w-40 flex-none space-y-8 pt-32 sm:pt-0">
                 <div className="relative">
                   <img
+                    ref={(el) => {
+                      imageRefs.current[3] = el;
+                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -155,6 +211,9 @@ export default function Hero() {
                 </div>
                 <div className="relative">
                   <img
+                    ref={(el) => {
+                      imageRefs.current[4] = el;
+                    }}
                     alt=""
                     src="https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
                     className="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
