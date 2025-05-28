@@ -1,3 +1,11 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const timeline = [
   {
     name: "Initial concept and planning",
@@ -30,12 +38,42 @@ const timeline = [
 ];
 
 export default function Timeline() {
+  const timelineRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    timelineRefs.current.forEach((el, index) => {
+      if (el) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.1,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    });
+  }, []);
+
   return (
     <div className="bg-white py-20 sm:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-24">
         <div className="mx-auto grid max-w-3xl grid-cols-1 gap-y-12 gap-x-12 lg:max-w-none lg:grid-cols-4">
-          {timeline.map((item) => (
-            <div key={item.name}>
+          {timeline.map((item, index) => (
+            <div
+              key={item.name + index}
+              ref={(el) => {
+                timelineRefs.current[index] = el;
+              }}
+              className="relative"
+            >
               <time
                 dateTime={item.dateTime}
                 className="flex items-center text-sm font-semibold text-indigo-600"
