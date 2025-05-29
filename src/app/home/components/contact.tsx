@@ -138,7 +138,7 @@ export default function Contact() {
   }, []);
   useEffect(() => {
     if (state.succeeded) {
-      toast.success("Message sent successfully!");
+      toast.success("Message sent successfully!", { duration: 8000 });
     }
     if (state.succeeded && formRef.current) {
       formRef.current.reset();
@@ -147,7 +147,7 @@ export default function Contact() {
 
   return (
     <>
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
       <div className="relative isolate bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
           <div className="relative px-5 pt-20 pb-16 sm:pt-24 lg:static lg:px-20 lg:py-36">
@@ -221,6 +221,21 @@ export default function Contact() {
                     name="Last Name"
                     type="text"
                     autoComplete="family-name"
+                    className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-sm text-gray-900 outline outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="phone-number"
+                    className="block text-xs/5 font-semibold text-gray-900"
+                  >
+                    Phone
+                  </label>
+                  <input
+                    id="phone-number"
+                    name="Phone number"
+                    type="text"
                     className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-sm text-gray-900 outline outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600"
                   />
                 </div>

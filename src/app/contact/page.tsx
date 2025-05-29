@@ -129,7 +129,7 @@ export default function Contact() {
   }, []);
   useEffect(() => {
     if (state.succeeded) {
-      toast.success("Message sent successfully!");
+      toast.success("Message sent successfully!", { duration: 8000 });
     }
     if (state.succeeded && formRef.current) {
       formRef.current.reset();
@@ -138,7 +138,7 @@ export default function Contact() {
 
   return (
     <>
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
       <div className="relative isolate bg-white px-6 py-10 sm:py-32 lg:px-8">
         <svg
           aria-hidden="true"
