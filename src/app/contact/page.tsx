@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useForm, ValidationError } from "@formspree/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,10 @@ export default function Contact() {
   const paraRef1 = useRef<HTMLDivElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
+
+  // Formspree hook - replace "xjkwndqj" with your actual Formspree form ID
+  const [state, handleSubmit] = useForm("xjkwndqj");
+
   useEffect(() => {
     // Animate heading
     if (headingRef.current) {
@@ -121,6 +126,19 @@ export default function Contact() {
       );
     }
   }, []);
+  if (state.succeeded) {
+    return (
+      <div className="mx-auto max-w-xl lg:max-w-4xl px-6 py-10 sm:py-32 lg:px-8">
+        <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+          Thanks for reaching out!
+        </h2>
+        <p className="mt-6 text-lg/8 text-gray-600">
+          We appreciate your message and will get back to you soon.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="relative isolate bg-white px-6 py-10 sm:py-32 lg:px-8">
       <svg
@@ -164,7 +182,7 @@ export default function Contact() {
           your finances and support your growth.
         </p>
         <div className="mt-16 flex flex-col gap-16 sm:gap-y-20 lg:flex-row">
-          <form ref={formRef} action="#" method="POST" className="lg:flex-auto">
+          <form ref={formRef} onSubmit={handleSubmit} className="lg:flex-auto">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div>
                 <label
@@ -218,17 +236,24 @@ export default function Contact() {
               </div>
               <div>
                 <label
-                  htmlFor="website"
+                  htmlFor="email"
                   className="block text-sm/6 font-semibold text-gray-900"
                 >
-                  Website
+                  Email
                 </label>
                 <div className="mt-2.5">
                   <input
-                    id="website"
-                    name="website"
-                    type="url"
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
                     className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                  />
+                  <ValidationError
+                    prefix="Email"
+                    field="email"
+                    errors={state.errors}
                   />
                 </div>
               </div>
@@ -244,8 +269,14 @@ export default function Contact() {
                     id="message"
                     name="message"
                     rows={4}
+                    required
                     className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                     defaultValue={""}
+                  />
+                  <ValidationError
+                    prefix="Message"
+                    field="message"
+                    errors={state.errors}
                   />
                 </div>
               </div>
@@ -253,6 +284,7 @@ export default function Contact() {
             <div className="mt-10">
               <button
                 type="submit"
+                disabled={state.submitting}
                 className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Let’s talk
