@@ -18,7 +18,7 @@ export default function Funnel() {
         </div>
 
         {/* Funnel Layers */}
-        <div className="flex flex-col items-center gap-[-10px]">
+        <div className="flex flex-col items-center gap-[10px]">
           <div
             className="full-funnel"
             style={{
@@ -52,6 +52,90 @@ export default function Funnel() {
               style={{
                 height: "40px",
                 width: "400px",
+                background: "#6366f1",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginTop: "-36px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                zIndex: "20",
+              }}
+            />
+          </div>
+          <div
+            className="full-funnel"
+            style={{
+              width: "400px",
+              position: "relative",
+              transition: "transform 0.3s ease",
+            }}
+          >
+            {/* Top Cap - simple ellipse */}
+            <div
+              className="funnel-top"
+              style={{
+                height: "40px",
+                width: "400px", // slightly narrower or equal to funnel top width
+                background: "#6366f1",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginBottom: "-20px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+              }}
+            />
+            {/* Funnel Body */}
+            <div
+              className="funnel-layer bg-indigo-500"
+              style={{ height: "120px", width: "400px" }}
+            >
+              <div className="text-xl font-bold">Revenue Conversion</div>
+            </div>
+            {/* Bottom Cap - simple ellipse */}
+            <div
+              style={{
+                height: "40px",
+                width: "320px",
+                background: "#6366f1",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginTop: "-36px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                zIndex: "20",
+              }}
+            />
+          </div>
+          <div
+            className="full-funnel"
+            style={{
+              width: "300px",
+              position: "relative",
+              transition: "transform 0.3s ease",
+            }}
+          >
+            {/* Top Cap - simple ellipse */}
+            <div
+              className="funnel-top"
+              style={{
+                height: "40px",
+                width: "300px", // slightly narrower or equal to funnel top width
+                background: "#6366f1",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginBottom: "-20px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+              }}
+            />
+            {/* Funnel Body */}
+            <div
+              className="funnel-layer bg-indigo-500"
+              style={{ height: "120px", width: "300px" }}
+            >
+              <div className="text-xl font-bold">EBITDA</div>
+            </div>
+            {/* Bottom Cap - simple ellipse */}
+            <div
+              style={{
+                height: "40px",
+                width: "240px",
                 background: "#6366f1",
                 borderRadius: "50% / 100%",
                 margin: "0 auto",
