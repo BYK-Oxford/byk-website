@@ -33,11 +33,13 @@ export default function Funnel() {
               style={{
                 height: "40px",
                 width: "500px", // slightly narrower or equal to funnel top width
-                background: "#6366f1",
+                background: "#818cf8",
                 borderRadius: "50% / 100%",
                 margin: "0 auto",
                 marginBottom: "-20px", // overlap with funnel body
                 boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                position: "relative", // Make zIndex effective
+                zIndex: 10,
               }}
             />
             {/* Funnel Body */}
@@ -49,10 +51,10 @@ export default function Funnel() {
             </div>
             {/* Bottom Cap - simple ellipse */}
             <div
+              className="bg-indigo-500"
               style={{
                 height: "40px",
                 width: "400px",
-                background: "#6366f1",
                 borderRadius: "50% / 100%",
                 margin: "0 auto",
                 marginTop: "-36px", // overlap with funnel body
@@ -75,11 +77,13 @@ export default function Funnel() {
               style={{
                 height: "40px",
                 width: "400px", // slightly narrower or equal to funnel top width
-                background: "#6366f1",
+                background: "#818cf8",
                 borderRadius: "50% / 100%",
                 margin: "0 auto",
                 marginBottom: "-20px", // overlap with funnel body
                 boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                position: "relative", // Make zIndex effective
+                zIndex: 10,
               }}
             />
             {/* Funnel Body */}
@@ -91,10 +95,10 @@ export default function Funnel() {
             </div>
             {/* Bottom Cap - simple ellipse */}
             <div
+              className="bg-indigo-500"
               style={{
                 height: "40px",
                 width: "320px",
-                background: "#6366f1",
                 borderRadius: "50% / 100%",
                 margin: "0 auto",
                 marginTop: "-36px", // overlap with funnel body
@@ -117,11 +121,13 @@ export default function Funnel() {
               style={{
                 height: "40px",
                 width: "300px", // slightly narrower or equal to funnel top width
-                background: "#6366f1",
+                background: "#818cf8",
                 borderRadius: "50% / 100%",
                 margin: "0 auto",
                 marginBottom: "-20px", // overlap with funnel body
                 boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                position: "relative", // Make zIndex effective
+                zIndex: 10,
               }}
             />
             {/* Funnel Body */}
@@ -133,10 +139,10 @@ export default function Funnel() {
             </div>
             {/* Bottom Cap - simple ellipse */}
             <div
+              className="bg-indigo-500"
               style={{
                 height: "40px",
                 width: "240px",
-                background: "#6366f1",
                 borderRadius: "50% / 100%",
                 margin: "0 auto",
                 marginTop: "-36px", // overlap with funnel body
