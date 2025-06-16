@@ -146,7 +146,7 @@ export default function Funnel() {
         <div className="flex flex-col items-center gap-[10px] transform scale-70 md:scale-100">
           <div
             ref={fun1}
-            className="full-funnel "
+            className="full-funnel"
             style={{
               width: "500px",
               position: "relative",
