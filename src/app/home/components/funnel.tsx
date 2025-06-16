@@ -18,9 +18,9 @@ export default function Funnel() {
         </div>
 
         {/* Funnel Layers */}
-        <div className="flex flex-col items-center gap-[10px]">
+        <div className="flex flex-col items-center gap-[10px] transform scale-70 md:scale-100">
           <div
-            className="full-funnel"
+            className="full-funnel "
             style={{
               width: "500px",
               position: "relative",
