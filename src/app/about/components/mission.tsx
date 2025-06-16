@@ -161,14 +161,15 @@ export default function Mission() {
             ref={heading1Ref}
             className="mt-2 text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900"
           >
-            On a mission to empower businesses
+            Turning Complex Data Into Clear Business Decisions
           </h1>
           <p
             ref={paragraph1Ref}
             className="mt-6 text-base sm:text-lg text-gray-700"
           >
-            We help businesses simplify their finances, stay compliant, and
-            focus on growth — all through reliable accounting support.
+            To turn Financial data into decisions through custom, clear, and
+            intelligent reporting — built for each business, not borrowed from a
+            template.
           </p>
         </div>
 
@@ -181,16 +182,16 @@ export default function Mission() {
               Our mission
             </h2>
             <p ref={paragraph2Ref} className="mt-6 text-base text-gray-600">
-              Our mission is to empower businesses with seamless, reliable, and
-              remote accounting solutions. We help companies stay financially
-              organized, tax-compliant, and ready to make informed
-              decisions—without the burden of in-house overhead.
+              We help businesses gain control of their numbers — not with
+              generic templates, but with tailor-made financial reports and KPIs
+              designed specifically for their goals, operations, and strategy.
             </p>
             <p ref={paragraph3Ref} className="mt-8 text-base text-gray-600">
-              By combining expert support with smart technology, we aim to
-              simplify financial operations and become a long-term partner in
-              your growth. Wherever you are, we’re here to keep your finances
-              clear, compliant, and under control.
+              At BYK Oxford, we believe that reporting should do more than just
+              tick boxes. It should inform decisions, highlight opportunities,
+              and drive growth. That’s why we build robust, flexible, and
+              easy-to-use reporting tools that adapt to your business — not the
+              other way around.
             </p>
           </div>
 
@@ -247,7 +248,7 @@ export default function Mission() {
             </div>
           </div>
 
-          <div className="max-lg:mt-16 lg:col-span-1">
+          {/* <div className="max-lg:mt-16 lg:col-span-1">
             <p className="text-sm font-semibold text-gray-500">The numbers</p>
             <hr className="mt-6 border-t border-gray-200" />
             <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
@@ -266,7 +267,7 @@ export default function Mission() {
                 </div>
               ))}
             </dl>
-          </div>
+          </div> */}
         </section>
       </div>
     </div>
