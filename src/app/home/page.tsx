@@ -14,7 +14,6 @@ export default function Home() {
       <Stats />
       <Screen />
       <Funnel />
-      <Grid />
       <Contact />
     </div>
   );

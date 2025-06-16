@@ -9,7 +9,6 @@ export default function About() {
     <div className="bg-white">
       <Hero />
       <Mission />
-      <Timeline />
       <Values />
       <CEO />
     </div>

@@ -68,14 +68,12 @@ export default function CEO() {
       <div className="mx-auto max-w-2xl lg:max-w-4xl">
         {/* <img alt="BYK Oxford Logo" src="/logo.png" className="mx-auto h-12" /> */}
         <figure className="mt-10">
-          <blockquote className="text-center text-xl/6  text-gray-900 sm:text-xl/9">
+          <blockquote className="text-center text-l/6  text-gray-900 sm:text-l/9">
             <p ref={headingRef}>
-              “Building this company has been one of the most rewarding journeys
-              of my life. Every challenge has taught me the value of resilience,
-              and every success has reminded me that real progress comes from
-              people — the ones we work with and the ones we serve. I'm proud of
-              what we've achieved, and even more excited about where we're
-              headed.”
+              “At BYK Oxford, we built our service because no two businesses are
+              alike — so why should their financial reports be? Our mission is
+              to provide every client with insights that truly fit their unique
+              needs, empowering smarter decisions and real growth.”
             </p>
           </blockquote>
           <figcaption className="mt-10">
