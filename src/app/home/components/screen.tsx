@@ -4,12 +4,12 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import {
-  ArrowPathIcon,
-  CloudArrowUpIcon,
-  Cog6ToothIcon,
-  FingerPrintIcon,
-  LockClosedIcon,
-  ClockIcon,
+  RocketLaunchIcon, // Fast Performance
+  CursorArrowRaysIcon, // User Friendly
+  AdjustmentsHorizontalIcon, // Flexible
+  ChartBarIcon, // Robust & Automated Reporting
+  BuildingOffice2Icon, // Tailored to Fit Your Business
+  ShieldCheckIcon,
 } from "@heroicons/react/20/solid";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,37 +19,36 @@ const features = [
     name: "Fast Performance",
     description:
       "Optimized dashboards that load quickly, even with large datasets — no delays, just insights.",
-    icon: CloudArrowUpIcon,
+    icon: RocketLaunchIcon,
   },
   {
-    name: "Low Load Time",
+    name: "User Friendly",
+    description: "Easy to navigate and even easier to act on.",
+    icon: CursorArrowRaysIcon,
+  },
+  {
+    name: "Flexible",
     description:
-      "Clean data models and backend tuning ensure dashboards open in seconds, not minutes.",
-    icon: ArrowPathIcon,
+      "No templates, no constraints — just insights that adapt to you.",
+    icon: AdjustmentsHorizontalIcon,
   },
   {
-    name: "Custom Reporting",
-    description:
-      "Tailored dashboards built around your KPIs — from cash flow to expense breakdowns.",
-    icon: Cog6ToothIcon,
-  },
-  {
-    name: "Data Accuracy",
+    name: "Robust & Automated Reporting",
     description:
       "Reliable and precise calculations ensure your reports reflect the real financial picture.",
-    icon: FingerPrintIcon,
+    icon: ChartBarIcon,
   },
   {
-    name: "Scheduled Refresh",
+    name: "Tailored to Fit Your Business",
     description:
-      "Automated data updates at regular intervals so you always have up-to-date information.",
-    icon: ClockIcon,
+      "Pre-packaged analytics solutions often leave businesses adapting to the tool — not the other way around. We reverse that by building the reports around your business.",
+    icon: BuildingOffice2Icon,
   },
   {
     name: "Secure Access",
     description:
       "Role-based permissions and SSL encryption ensure your data stays safe and private.",
-    icon: LockClosedIcon,
+    icon: ShieldCheckIcon,
   },
 ];
 

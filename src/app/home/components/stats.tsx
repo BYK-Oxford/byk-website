@@ -6,9 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { id: 1, name: "Businesses Supported", value: "50+" },
+  { id: 1, name: "Average Cost Saving", value: "60%" },
   { id: 2, name: "Average Response Time", value: "< 24 hrs" },
-  { id: 3, name: "Monthly Reports Delivered", value: "100+" },
+  { id: 3, name: "Time Saved Per Month", value: "40+ hrs" },
   { id: 4, name: "Client Satisfaction Rate", value: "98%" },
 ];
 
