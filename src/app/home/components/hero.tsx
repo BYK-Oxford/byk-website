@@ -143,14 +143,15 @@ export default function Hero() {
                   ref={headingRef}
                   className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl"
                 >
-                  Precision Accounting for Your Business Growth
+                  No Templates. <br />
+                  Just Tailored Financial Intelligence
                 </h1>
                 <p
                   ref={paragraphRef}
                   className="text-lg font-medium text-pretty text-gray-500 sm:max-w-md sm:text-lg/8 lg:max-w-none"
                 >
-                  Providing expert accounting and financial services to help
-                  your business thrive with confidence.
+                  Custom KPIs for What Matters Most to You. Our experts will
+                  help your business to thrive with confidence
                 </p>
                 <a
                   ref={buttonRef}
