@@ -99,7 +99,7 @@ export default function CEO() {
               >
                 <circle r={1} cx={1} cy={1} />
               </svg>
-              <div className="text-gray-600">CEO of BYK Oxford</div>
+              <div className="text-gray-600">Founder BYK Oxford</div>
             </div>
           </figcaption>
         </figure>

@@ -322,7 +322,7 @@ export default function Contact() {
                       Burak Yilmazkaya
                     </div>
                     <div className="text-sm/6 text-gray-600">
-                      CEO of BYK Oxford
+                      Founder BYK Oxford
                     </div>
                   </div>
                 </figcaption>

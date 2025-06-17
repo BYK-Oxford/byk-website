@@ -32,8 +32,8 @@ const contactInfos = [
     icon: PhoneIcon,
     label: "Telephone",
     value: (
-      <a href="tel:+447828994591" className="hover:text-gray-900">
-        +44 7828 994591
+      <a href="tel:+447311649055" className="hover:text-gray-900">
+        +44 7311 649055
       </a>
     ),
   },

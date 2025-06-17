@@ -89,6 +89,58 @@ export default function Funnel() {
 
         {/* Funnel Layers */}
         <div className="flex flex-col items-center gap-[10px] transform scale-70 md:scale-100">
+          {/* <div className="flex items-center gap-4">
+            <div className="w-40 text-right pr-4">
+              <p className="text-gray-700 font-semibold">Sales Pipeline</p>
+            </div>
+            <div
+              ref={(el) => {
+                funnelLayers.current[0] = el;
+              }}
+              className="full-funnel"
+              style={{
+                width: "500px",
+                position: "relative",
+                transition: "transform 0.3s ease",
+              }}
+            >
+              <div
+                className="funnel-top"
+                style={{
+                  height: "40px",
+                  width: "500px",
+                  background: "#818cf8",
+                  borderRadius: "50% / 100%",
+                  margin: "0 auto",
+                  marginBottom: "-20px",
+                  boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                  position: "relative",
+                  zIndex: 10,
+                }}
+              />
+              <div
+                className="funnel-layer bg-indigo-500 flex justify-center items-center"
+                style={{ height: "120px", width: "500px" }}
+              >
+                <div className="text-xl font-bold text-white">
+                  Sales Pipeline
+                </div>
+              </div>
+              <div
+                className="bg-indigo-500"
+                style={{
+                  height: "40px",
+                  width: "400px",
+                  borderRadius: "50% / 100%",
+                  margin: "0 auto",
+                  marginTop: "-36px",
+                  boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                  zIndex: "20",
+                }}
+              />
+            </div>
+          </div> */}
+
           <div
             ref={(el) => {
               funnelLayers.current[0] = el;
