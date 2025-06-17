@@ -10,23 +10,6 @@ export default function Funnel() {
   const paraRef = useRef<HTMLParagraphElement | null>(null);
   const funnelLayers = useRef<(HTMLDivElement | null)[]>([]);
 
-  const handleHover = (index: number) => {
-    const layer = funnelLayers.current[index];
-    if (layer) {
-      gsap.fromTo(
-        layer,
-        { scale: 1 },
-        {
-          scale: 1.05,
-          duration: 0.3,
-          yoyo: true,
-          repeat: 1,
-          ease: "power1.inOut",
-        }
-      );
-    }
-  };
-
   useEffect(() => {
     if (headingRef.current) {
       gsap.fromTo(
@@ -103,201 +86,203 @@ export default function Funnel() {
             We plan to maximise your work and money by efficient funneling.
           </p>
         </div>
-        <div className="relative w-[600px] h-[600px] mx-auto">
-          <div className="absolute z-20" style={{ top: 220, left: 220 }}>
-            <CircleButton
-              size={sizes[0]}
-              label="Sales"
-              onHover={() => handleHover(0)}
-            />
-          </div>
-          <div className="absolute z-20" style={{ top: 130, left: 180 }}>
-            <CircleButton
-              size={sizes[1]}
-              label="Revenue"
-              onHover={() => handleHover(1)}
-            />
-          </div>
-          <div className="absolute z-20" style={{ top: 260, left: 320 }}>
-            <CircleButton
-              size={sizes[2]}
-              label="EBITDA"
-              onHover={() => handleHover(2)}
-            />
-          </div>
 
-          {/* Funnel Layers */}
-          <div className="flex flex-col items-center gap-[10px] transform scale-70 md:scale-100">
+        {/* Funnel Layers */}
+        <div className="flex flex-col items-center gap-[10px] transform scale-70 md:scale-100">
+          <div
+            ref={(el) => {
+              funnelLayers.current[0] = el;
+            }}
+            className="full-funnel"
+            style={{
+              width: "500px",
+              position: "relative",
+              transition: "transform 0.3s ease",
+            }}
+            id="funnel-layer-0"
+          >
+            {/* Top Cap - simple ellipse */}
             <div
-              ref={(el) => {
-                funnelLayers.current[0] = el;
-              }}
-              className="full-funnel"
+              className="funnel-top"
               style={{
-                width: "500px",
-                position: "relative",
-                transition: "transform 0.3s ease",
+                height: "40px",
+                width: "500px", // slightly narrower or equal to funnel top width
+                background: "#818cf8",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginBottom: "-20px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                position: "relative", // Make zIndex effective
+                zIndex: 10,
               }}
-              id="funnel-layer-0"
+            />
+            {/* Funnel Body */}
+            <div
+              className="funnel-layer bg-indigo-500"
+              style={{ height: "120px", width: "500px" }}
             >
-              {/* Top Cap - simple ellipse */}
-              <div
-                className="funnel-top"
-                style={{
-                  height: "40px",
-                  width: "500px", // slightly narrower or equal to funnel top width
-                  background: "#818cf8",
-                  borderRadius: "50% / 100%",
-                  margin: "0 auto",
-                  marginBottom: "-20px", // overlap with funnel body
-                  boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
-                  position: "relative", // Make zIndex effective
-                  zIndex: 10,
-                }}
-              />
-              {/* Funnel Body */}
-              <div
-                className="funnel-layer bg-indigo-500"
-                style={{ height: "120px", width: "500px" }}
-              >
-                <div className="text-xl font-bold">Sales Pipeline</div>
-              </div>
-              {/* Bottom Cap - simple ellipse */}
-              <div
-                className="bg-indigo-500"
-                style={{
-                  height: "40px",
-                  width: "400px",
-                  borderRadius: "50% / 100%",
-                  margin: "0 auto",
-                  marginTop: "-36px", // overlap with funnel body
-                  boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
-                  zIndex: "20",
-                }}
-              />
+              <div className="text-xl font-bold">Sales Pipeline</div>
             </div>
+            {/* Bottom Cap - simple ellipse */}
             <div
-              ref={(el) => {
-                funnelLayers.current[1] = el;
-              }}
-              className="full-funnel"
+              className="bg-indigo-500"
               style={{
+                height: "40px",
                 width: "400px",
-                position: "relative",
-                transition: "transform 0.3s ease",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginTop: "-36px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                zIndex: "20",
               }}
-              id="funnel-layer-0"
-            >
-              {/* Top Cap - simple ellipse */}
-              <div
-                className="funnel-top"
-                style={{
-                  height: "40px",
-                  width: "400px", // slightly narrower or equal to funnel top width
-                  background: "#818cf8",
-                  borderRadius: "50% / 100%",
-                  margin: "0 auto",
-                  marginBottom: "-20px", // overlap with funnel body
-                  boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
-                  position: "relative", // Make zIndex effective
-                  zIndex: 10,
-                }}
-              />
-              {/* Funnel Body */}
-              <div
-                className="funnel-layer bg-indigo-500"
-                style={{ height: "120px", width: "400px" }}
-              >
-                <div className="text-xl font-bold">Revenue Conversion</div>
-              </div>
-              {/* Bottom Cap - simple ellipse */}
-              <div
-                className="bg-indigo-500"
-                style={{
-                  height: "40px",
-                  width: "320px",
-                  borderRadius: "50% / 100%",
-                  margin: "0 auto",
-                  marginTop: "-36px", // overlap with funnel body
-                  boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
-                  zIndex: "20",
-                }}
-              />
-            </div>
+            />
+          </div>
+          <div
+            ref={(el) => {
+              funnelLayers.current[1] = el;
+            }}
+            className="full-funnel"
+            style={{
+              width: "400px",
+              position: "relative",
+              transition: "transform 0.3s ease",
+            }}
+            id="funnel-layer-0"
+          >
+            {/* Top Cap - simple ellipse */}
             <div
-              ref={(el) => {
-                funnelLayers.current[2] = el;
-              }}
-              className="full-funnel"
+              className="funnel-top"
               style={{
-                width: "300px",
-                position: "relative",
-                transition: "transform 0.3s ease",
+                height: "40px",
+                width: "400px", // slightly narrower or equal to funnel top width
+                background: "#818cf8",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginBottom: "-20px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                position: "relative", // Make zIndex effective
+                zIndex: 10,
               }}
-              id="funnel-layer-0"
+            />
+            {/* Funnel Body */}
+            <div
+              className="funnel-layer bg-indigo-500"
+              style={{ height: "120px", width: "400px" }}
             >
-              {/* Top Cap - simple ellipse */}
-              <div
-                className="funnel-top"
-                style={{
-                  height: "40px",
-                  width: "300px", // slightly narrower or equal to funnel top width
-                  background: "#818cf8",
-                  borderRadius: "50% / 100%",
-                  margin: "0 auto",
-                  marginBottom: "-20px", // overlap with funnel body
-                  boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
-                  position: "relative", // Make zIndex effective
-                  zIndex: 10,
-                }}
-              />
-              {/* Funnel Body */}
-              <div
-                className="funnel-layer bg-indigo-500"
-                style={{ height: "120px", width: "300px" }}
-              >
-                <div className="text-xl font-bold">EBITDA</div>
-              </div>
-              {/* Bottom Cap - simple ellipse */}
-              <div
-                className="bg-indigo-500"
-                style={{
-                  height: "40px",
-                  width: "240px",
-                  borderRadius: "50% / 100%",
-                  margin: "0 auto",
-                  marginTop: "-36px", // overlap with funnel body
-                  boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
-                  zIndex: "20",
-                }}
-              />
+              <div className="text-xl font-bold">Revenue Conversion</div>
             </div>
+            {/* Bottom Cap - simple ellipse */}
+            <div
+              className="bg-indigo-500"
+              style={{
+                height: "40px",
+                width: "320px",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginTop: "-36px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                zIndex: "20",
+              }}
+            />
+          </div>
+          <div
+            ref={(el) => {
+              funnelLayers.current[2] = el;
+            }}
+            className="full-funnel"
+            style={{
+              width: "300px",
+              position: "relative",
+              transition: "transform 0.3s ease",
+            }}
+            id="funnel-layer-0"
+          >
+            {/* Top Cap - simple ellipse */}
+            <div
+              className="funnel-top"
+              style={{
+                height: "40px",
+                width: "300px", // slightly narrower or equal to funnel top width
+                background: "#818cf8",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginBottom: "-20px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                position: "relative", // Make zIndex effective
+                zIndex: 10,
+              }}
+            />
+            {/* Funnel Body */}
+            <div
+              className="funnel-layer bg-indigo-500"
+              style={{ height: "120px", width: "300px" }}
+            >
+              <div className="text-xl font-bold">EBITDA</div>
+            </div>
+            {/* Bottom Cap - simple ellipse */}
+            <div
+              className="bg-indigo-500"
+              style={{
+                height: "40px",
+                width: "240px",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginTop: "-36px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                zIndex: "20",
+              }}
+            />
+          </div>
+          <div
+            ref={(el) => {
+              funnelLayers.current[2] = el;
+            }}
+            className="full-funnel"
+            style={{
+              width: "240px",
+              position: "relative",
+              transition: "transform 0.3s ease",
+            }}
+            id="funnel-layer-0"
+          >
+            {/* Top Cap - simple ellipse */}
+            <div
+              className="funnel-top"
+              style={{
+                height: "40px",
+                width: "240px", // slightly narrower or equal to funnel top width
+                background: "#818cf8",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginBottom: "-20px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                position: "relative", // Make zIndex effective
+                zIndex: 10,
+              }}
+            />
+            {/* Funnel Body */}
+            <div
+              className="funnel-layer bg-indigo-500"
+              style={{ height: "120px", width: "240px" }}
+            >
+              <div className="text-xl font-bold">Net Profit</div>
+            </div>
+            {/* Bottom Cap - simple ellipse */}
+            <div
+              className="bg-indigo-500"
+              style={{
+                height: "40px",
+                width: "190px",
+                borderRadius: "50% / 100%",
+                margin: "0 auto",
+                marginTop: "-36px", // overlap with funnel body
+                boxShadow: "0 8px 20px rgb(99 102 241 / 0.3)",
+                zIndex: "20",
+              }}
+            />
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-function CircleButton({
-  label,
-  onHover,
-  size = 64,
-}: {
-  label: string;
-  onHover: () => void;
-  size?: number;
-}) {
-  return (
-    <div
-      className="bg-indigo-200 rounded-full flex items-center justify-center text-sm font-medium cursor-pointer hover:bg-indigo-400 transition"
-      onMouseEnter={onHover}
-      style={{
-        width: size,
-        height: size,
-      }}
-    >
-      {label}
     </div>
   );
 }
