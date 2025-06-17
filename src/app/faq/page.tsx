@@ -7,29 +7,44 @@ import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const faqs = [
   {
-    question: "What services does BYK Oxford provide?",
+    question: "What types of financial models do you build?",
     answer:
-      "We offer accounting, bookkeeping, tax planning, payroll management, and business advisory services tailored for individuals and businesses.",
+      "We specialize in a wide range of models, including startup financial projections, 3 Statement Model, Budgeting and Forecasting tools, M&A analysis, and custom dashboards tailored to your business.",
   },
   {
-    question: "Do you work with startups and small businesses?",
+    question: "Can you customize a financial model for my industry?",
     answer:
-      "Yes, we specialize in helping startups and SMEs set up solid financial foundations and grow with confidence.",
+      "Absolutely. We tailor every model to your business needs, whether you're in tech, real estate, healthcare, SaaS, or another sector.",
   },
   {
-    question: "Can I switch to BYK Oxford from my current accountant?",
+    question: "Do you offer consulting beyond financial modelling?",
     answer:
-      "Absolutely. We’ll guide you through a smooth transition, handle all the paperwork, and ensure minimal disruption.",
+      "Yes—we offer strategic financial advisory services including fundraising support, investment readiness, scenario planning, and CFO-level insights.",
   },
   {
-    question: "How do you ensure data security and confidentiality?",
+    question: "What software or tools do you use for modelling?",
     answer:
-      "We use secure, encrypted systems and comply with GDPR to protect your data and ensure confidentiality at every step.",
+      "We primarily use Excel and Google Sheets, enhanced with automation tools, APIs, leveraging modern programming tools like Python and integrating SQL (for Database) and visualisation platforms like PowerBI.",
   },
   {
-    question: "Do you offer virtual consultations?",
+    question: "Can the models integrate with our existing systems?",
     answer:
-      "Yes. We offer flexible online consultations to suit your schedule—no matter where you're based.",
+      "Yes. We can design models to integrate with tools like Netsuite, Oracle, Microsoft D365, Xero.",
+  },
+  {
+    question: "How long does it take to complete a financial model?",
+    answer:
+      "Depending on complexity, a model can take anywhere from 2 to 8 weeks. We provide a clear project timeline before starting.",
+  },
+  {
+    question: "How do you price your services?",
+    answer:
+      "Pricing is project-based and depends on complexity, scope, and timeline. We will provide a transparent quote after a free initial consultation. There will be no hidden fees.",
+  },
+  {
+    question: "Is my financial data secure and confidential?",
+    answer:
+      "Absolutely. We follow strict confidentiality protocols and can sign NDAs to ensure your data always remains protected.",
   },
 ];
 
