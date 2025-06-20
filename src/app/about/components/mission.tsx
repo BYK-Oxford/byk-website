@@ -234,13 +234,13 @@ export default function Mission() {
           {/* <p className="text-base/7 font-semibold text-indigo-600">About us</p> */}
           <h1
             ref={heading1Ref}
-            className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl"
+            className="mt-2 text-3xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl"
           >
             Turning Complex Data Into Clear Business Decisions
           </h1>
           <p
             ref={paragraph1Ref}
-            className="mt-6 text-xl/8 text-balance text-gray-700"
+            className="mt-6 text-base/7 text-balance text-gray-700"
           >
             To turn Financial data into decisions through custom, clear, and
             intelligent reporting — built for each business, not borrowed from a

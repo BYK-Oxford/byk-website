@@ -103,7 +103,7 @@ export default function Values() {
         <h2 className="text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
           Our values
         </h2>
-        <p className="mt-4 text-base text-gray-600 sm:text-lg max-w-xl mx-auto">
+        <p className="mt-4 text-base/7 text-gray-600 sm:text-base/7 max-w-xl mx-auto">
           At the heart of our work is a commitment to accuracy, trust, and
           partnership. We strive to deliver financial clarity and confidence
           through ethical practices, expert insight, and tailored support.
