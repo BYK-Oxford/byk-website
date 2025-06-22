@@ -11,39 +11,46 @@ export default function WorldMap() {
   };
 
   return (
-    <ComposableMap projectionConfig={{ scale: 150 }} width={800} height={400}>
-      <Geographies geography={geoUrl}>
-        {({ geographies }: { geographies: any[] }) =>
-          geographies.map((geo) => (
-            <Geography
-              key={geo.rsmKey}
-              geography={geo}
-              onClick={() => handleHover(geo)}
-              style={{
-                default: {
-                  fill: "#818cf8",
-                  stroke: "#000000",
-                  strokeWidth: 0.1,
-                  outline: "none",
-                },
-                hover: {
-                  fill: "indigo",
-                  stroke: "#000000",
-                  strokeWidth: 0.5,
-                  outline: "none",
-                  cursor: "pointer",
-                },
-                pressed: {
-                  fill: "indigo",
-                  stroke: "#000000",
-                  strokeWidth: 0.5,
-                  outline: "none",
-                },
-              }}
-            />
-          ))
-        }
-      </Geographies>
-    </ComposableMap>
+    <div className="w-auto h-full max-w-full">
+      <ComposableMap
+        projectionConfig={{ scale: 150 }}
+        width={400}
+        height={200}
+        style={{ width: "100%", height: "auto" }}
+      >
+        <Geographies geography={geoUrl}>
+          {({ geographies }: { geographies: any[] }) =>
+            geographies.map((geo) => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                onClick={() => handleHover(geo)}
+                style={{
+                  default: {
+                    fill: "#818cf8",
+                    stroke: "#000000",
+                    strokeWidth: 0.1,
+                    outline: "none",
+                  },
+                  hover: {
+                    fill: "indigo",
+                    stroke: "#000000",
+                    strokeWidth: 0.5,
+                    outline: "none",
+                    cursor: "pointer",
+                  },
+                  pressed: {
+                    fill: "indigo",
+                    stroke: "#000000",
+                    strokeWidth: 0.5,
+                    outline: "none",
+                  },
+                }}
+              />
+            ))
+          }
+        </Geographies>
+      </ComposableMap>
+    </div>
   );
 }

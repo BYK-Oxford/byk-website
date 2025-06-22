@@ -67,7 +67,7 @@ export default function Funnel() {
   }, []);
   const sizes = [50, 80, 100];
   return (
-    <div className="bg-white py-12 sm:py-16">
+    <div className="bg-white py-12 sm:py-12">
       <div className="mx-auto max-w-xl text-center mb-10">
         <h2 ref={headingRef} className="text-sm font-semibold text-indigo-600">
           Heading
@@ -84,7 +84,7 @@ export default function Funnel() {
       </div>
 
       {/* Funnel Layers */}
-      <div className="flex flex-col items-center gap-[10px] transform scale-70 md:scale-100">
+      <div className="flex flex-col items-center gap-[10px] transform scale-65 md:scale-100">
         {/* <div className="flex items-center gap-4">
             <div className="w-40 text-right pr-4">
               <p className="text-gray-700 font-semibold">Sales Pipeline</p>

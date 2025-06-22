@@ -5,7 +5,7 @@ import Hero from "@/app/home/components/hero";
 import Stats from "@/app/home/components/stats";
 import Screen from "@/app/home/components/screen";
 import Contact from "@/app/home/components/contact";
-import FunnelBody from "@/app/home/components/funnelBody";
+import Funnel from "@/app/home/components/funnel";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <Hero />
       <Stats />
       <Screen />
-      <FunnelBody />
+      <Funnel />
       <Contact />
     </div>
   );
