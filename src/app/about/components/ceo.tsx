@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 export default function CEO() {
   const headingRef = useRef<HTMLDivElement | null>(null);
   const paragraphRef = useRef<HTMLDivElement | null>(null);

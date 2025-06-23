@@ -4,12 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-const stats = [
-  { id: 1, name: "Raised", value: "$150M" },
-  { id: 2, name: "Companies", value: "30K" },
-  { id: 3, name: "Deals Closed", value: "11.5M" },
-  { id: 4, name: "Leads Generated", value: "200M" },
-];
+
 export default function Mission() {
   const heading1Ref = useRef<HTMLHeadingElement | null>(null);
   const heading2Ref = useRef<HTMLHeadingElement | null>(null);

@@ -4,12 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-const stats = [
-  { id: 1, name: "Raised", value: "$150M" },
-  { id: 2, name: "Companies", value: "30K" },
-  { id: 3, name: "Deals Closed", value: "11.5M" },
-  { id: 4, name: "Leads Generated", value: "200M" },
-];
+
 export default function Mission() {
   const heading1Ref = useRef<HTMLHeadingElement | null>(null);
   const heading2Ref = useRef<HTMLHeadingElement | null>(null);
@@ -247,27 +242,6 @@ export default function Mission() {
               </div>
             </div>
           </div>
-
-          {/* <div className="max-lg:mt-16 lg:col-span-1">
-            <p className="text-sm font-semibold text-gray-500">The numbers</p>
-            <hr className="mt-6 border-t border-gray-200" />
-            <dl className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
-              {stats.map((stat, index) => (
-                <div
-                  key={stat.id}
-                  ref={(el) => {
-                    statRefs.current[index] = el;
-                  }}
-                  className="flex flex-col gap-y-2 border-b border-dotted border-gray-200 pb-4"
-                >
-                  <dt className="text-sm text-gray-600">{stat.name}</dt>
-                  <dd className="order-first text-5xl font-semibold tracking-tight">
-                    {stat.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div> */}
         </section>
       </div>
     </div>
