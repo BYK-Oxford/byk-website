@@ -1,4 +1,3 @@
-import { Label } from "@headlessui/react";
 import ServiceContainer from "./components/serviceContainer";
 ("@/app/service/components/serviceContainer");
 export default function Service() {
