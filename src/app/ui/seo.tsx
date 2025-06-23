@@ -16,6 +16,11 @@ export default function SEOHead({
   return (
     <Head>
       <title>{title}</title>
+      <meta
+        name="google-site-verification"
+        content="-Ia_-3AuF1ufaCrdP7Gc5eyaAkbylox_ZB4NH4Es7Fs"
+      />
+
       <meta name="description" content={description} />
       <meta name="robots" content="index, follow" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
