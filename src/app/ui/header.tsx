@@ -25,7 +25,13 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <a href="/home" className="-m-1.5 p-1.5">
             <span className="sr-only">BYK Oxford</span>
-            <Image alt="BYK Oxford" src="/logo.png" className="h-15 w-auto" />
+            <Image
+              alt="BYK Oxford"
+              src="/logo.png"
+              width={120}
+              height={40}
+              className="h-15 w-auto"
+            />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -68,6 +74,8 @@ export default function Header() {
                 alt="BYK Oxford Logo"
                 src="/logo.png"
                 className="h-15 w-auto"
+                width={120}
+                height={40}
               />
             </Link>
             <button
