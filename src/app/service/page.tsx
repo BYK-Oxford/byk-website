@@ -1,5 +1,5 @@
-import ServiceContainer from "./components/serviceContainer";
-("@/app/service/components/serviceContainer");
+import ServiceContainer from "@/app/service/components/serviceContainer";
+
 export default function Service() {
   return (
     <div className="bg-white py-24 sm:py-24">
