@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useForm, ValidationError } from "@formspree/react";
 import { Toaster, toast } from "react-hot-toast";
+import SEOHead from "@/app/ui/seo";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -139,6 +140,13 @@ export default function Contact() {
 
   return (
     <>
+      <SEOHead
+        title="Contact Us | BYK Oxford"
+        description="Get in touch with BYK Oxford’s expert team. Whether you need support, advice, or a custom proposal, we’re here to help."
+        url="https://bykoxford.com/contact"
+        image="https://bykoxford.com/logo.png"
+      />
+
       <Toaster position="top-center" />
       <div className="relative isolate bg-white px-6 py-10 sm:py-32 lg:px-8">
         <svg
