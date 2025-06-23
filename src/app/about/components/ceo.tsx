@@ -82,6 +82,8 @@ export default function CEO() {
               alt="CEO Image"
               src="https://media.licdn.com/dms/image/v2/D4E03AQHIsWb4wu_gXg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1680788661265?e=1753315200&v=beta&t=L9_UIY_59hPU_6XP5h4BT8b0x_oo_vUxodCfeMnmuSU"
               className="mx-auto size-10 rounded-full"
+              width={768}
+              height={528}
             />
             <div
               ref={paragraphRef}
