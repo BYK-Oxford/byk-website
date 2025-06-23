@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 export default function CEO() {
@@ -65,7 +66,7 @@ export default function CEO() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-indigo-100),white)] opacity-20" />
       <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-indigo-600/10 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center" />
       <div className="mx-auto max-w-2xl lg:max-w-4xl">
-        {/* <img alt="BYK Oxford Logo" src="/logo.png" className="mx-auto h-12" /> */}
+        {/* <Image alt="BYK Oxford Logo" src="/logo.png" className="mx-auto h-12" /> */}
         <figure className="mt-10">
           <blockquote className="text-center text-l/6  text-gray-900 sm:text-l/9">
             <p ref={headingRef}>
@@ -76,7 +77,7 @@ export default function CEO() {
             </p>
           </blockquote>
           <figcaption className="mt-10">
-            <img
+            <Image
               ref={imageRef}
               alt="CEO Image"
               src="https://media.licdn.com/dms/image/v2/D4E03AQHIsWb4wu_gXg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1680788661265?e=1753315200&v=beta&t=L9_UIY_59hPU_6XP5h4BT8b0x_oo_vUxodCfeMnmuSU"

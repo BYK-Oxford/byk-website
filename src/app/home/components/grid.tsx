@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -97,7 +98,7 @@ export default function Grid() {
               </div>
               <div className="@container relative min-h-[24rem] w-full grow max-lg:mx-auto max-lg:max-w-[19rem]">
                 <div className="absolute inset-x-8 top-8 bottom-0 overflow-hidden rounded-t-[9.6cqw] border-x-[2.4cqw] border-t-[2.4cqw] border-gray-700 bg-gray-900 shadow-xl">
-                  <img
+                  <Image
                     className="size-full object-cover object-top"
                     src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png"
                     alt=""
@@ -121,7 +122,7 @@ export default function Grid() {
                 </p>
               </div>
               <div className="flex flex-1 items-center justify-center px-6 max-lg:pt-8 max-lg:pb-10 sm:px-8 lg:pb-1.6">
-                <img
+                <Image
                   className="w-full max-lg:max-w-[13rem]"
                   src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
                   alt=""
@@ -144,7 +145,7 @@ export default function Grid() {
                 </p>
               </div>
               <div className="@container flex flex-1 items-center max-lg:py-4 lg:pb-1.6">
-                <img
+                <Image
                   className="h-[min(121px,32cqw)] object-cover"
                   src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-security.png"
                   alt=""

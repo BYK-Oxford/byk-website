@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -136,7 +137,7 @@ export default function Screen() {
 
       <div className="relative overflow-hidden pt-10">
         <div className="mx-auto max-w-5xl px-4 lg:px-6">
-          <img
+          <Image
             alt="App screenshot"
             src="/screen.png"
             width={1200}

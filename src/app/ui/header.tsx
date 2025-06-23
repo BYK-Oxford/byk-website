@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -24,7 +25,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <a href="/home" className="-m-1.5 p-1.5">
             <span className="sr-only">BYK Oxford</span>
-            <img alt="BYK Oxford" src="/logo.png" className="h-15 w-auto" />
+            <Image alt="BYK Oxford" src="/logo.png" className="h-15 w-auto" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -63,7 +64,7 @@ export default function Header() {
               className="-m-1.5 p-1.5"
             >
               <span className="sr-only">BYK Oxford</span>
-              <img
+              <Image
                 alt="BYK Oxford Logo"
                 src="/logo.png"
                 className="h-15 w-auto"

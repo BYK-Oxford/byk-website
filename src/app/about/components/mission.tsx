@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -201,10 +202,10 @@ export default function Mission() {
         );
       }
     });
-    imageRefs.current.forEach((img, index) => {
-      if (img) {
+    imageRefs.current.forEach((Image, index) => {
+      if (Image) {
         gsap.fromTo(
-          img,
+          Image,
           { opacity: 0, y: 30, scale: 0.95 },
           {
             opacity: 1,
@@ -213,7 +214,7 @@ export default function Mission() {
             duration: 0.8,
             delay: index * 0.15,
             scrollTrigger: {
-              trigger: img,
+              trigger: Image,
               start: "top 95%",
               toggleActions: "play none none none",
             },
@@ -272,7 +273,7 @@ export default function Mission() {
                 }}
                 className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10"
               >
-                <img
+                <Image
                   alt=""
                   src="https://images.pexels.com/photos/16009515/pexels-photo-16009515.jpeg"
                   className="block size-full object-cover"
@@ -284,7 +285,7 @@ export default function Mission() {
                 }}
                 className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-40"
               >
-                <img
+                <Image
                   alt=""
                   src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?&auto=format&fit=crop&crop=center&w=560&h=560&q=90"
                   className="block size-full object-cover"
@@ -296,7 +297,7 @@ export default function Mission() {
                 }}
                 className="aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10"
               >
-                <img
+                <Image
                   alt=""
                   src="https://images.pexels.com/photos/5716031/pexels-photo-5716031.jpeg"
                   className="block size-full object-cover"
@@ -308,7 +309,7 @@ export default function Mission() {
                 }}
                 className="-mt-8 aspect-square overflow-hidden rounded-xl shadow-xl outline-1 -outline-offset-1 outline-black/10 lg:-mt-40"
               >
-                <img
+                <Image
                   alt=""
                   src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?&auto=format&fit=crop&crop=center&w=560&h=560&q=90"
                   className="block size-full object-cover"
