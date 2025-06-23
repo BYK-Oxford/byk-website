@@ -138,7 +138,7 @@ export default function Screen() {
         <div className="mx-auto max-w-5xl px-4 lg:px-6">
           <img
             alt="App screenshot"
-            src="https://www.newhorizons.com/Portals/2/power-bi-service-dashboard-sm.png"
+            src="/screen.png"
             width={1200}
             height={720}
             className="rounded-lg shadow-lg ring-1 ring-gray-200"

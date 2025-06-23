@@ -64,6 +64,25 @@ export default function Funnel() {
         }
       );
     }
+    funnelLayers.current.forEach((el, index) => {
+      if (el) {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.1,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    });
   }, []);
   const sizes = [50, 80, 100];
   return (
@@ -81,6 +100,21 @@ export default function Funnel() {
         <p ref={paraRef} className="mt-4 text-base text-gray-600">
           We plan to maximise your work and money by efficient funneling.
         </p>
+      </div>
+
+      <div className="mx-auto max-w-xl text-center justify-center mb-10 flex gap-3">
+        <button className="w-fit rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          button1
+        </button>
+        <button className="w-fit rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          button1
+        </button>
+        <button className="w-fit rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          button1
+        </button>
+        <button className="w-fit rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          button1
+        </button>
       </div>
 
       {/* Funnel Layers */}
@@ -283,7 +317,7 @@ export default function Funnel() {
         </div>
         <div
           ref={(el) => {
-            funnelLayers.current[2] = el;
+            funnelLayers.current[3] = el;
           }}
           className="full-funnel"
           style={{
