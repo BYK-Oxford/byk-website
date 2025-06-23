@@ -1,5 +1,7 @@
 import { CheckIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 interface ServiceContainerProps {
   heading: string;
@@ -17,8 +19,31 @@ export default function ServiceContainer({
   labelBody,
   tag,
 }: ServiceContainerProps) {
+  const card1 = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (card1.current) {
+      gsap.fromTo(
+        card1.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card1.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+  }, []);
   return (
-    <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+    <div
+      ref={card1}
+      className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none"
+    >
       <div className="p-8 sm:p-10 lg:flex-auto">
         <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
           {heading}

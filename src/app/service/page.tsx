@@ -1,14 +1,134 @@
+"use client";
 import ServiceContainer from "@/app/service/components/serviceContainer";
-
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 export default function Service() {
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const paragraphRef = useRef<HTMLParagraphElement | null>(null);
+  const card1 = useRef<HTMLDivElement | null>(null);
+  const card2 = useRef<HTMLDivElement | null>(null);
+  const card3 = useRef<HTMLDivElement | null>(null);
+  const card4 = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (headingRef.current) {
+      gsap.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    if (paragraphRef.current) {
+      gsap.fromTo(
+        paragraphRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: paragraphRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    if (card1.current) {
+      gsap.fromTo(
+        card1.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card1.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    if (card2.current) {
+      gsap.fromTo(
+        card2.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card2.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    if (card3.current) {
+      gsap.fromTo(
+        card3.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card3.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    if (card4.current) {
+      gsap.fromTo(
+        card4.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card4.current,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+  }, []);
+
   return (
     <div className="bg-white py-24 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl sm:text-center">
-          <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl sm:text-balance">
+          <h2
+            ref={headingRef}
+            className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-4xl sm:text-balance"
+          >
             Expert-Driven Services
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-md font-medium text-pretty text-gray-500 sm:text-md">
+          <p
+            ref={paragraphRef}
+            className="mx-auto mt-6 max-w-2xl text-md font-medium text-pretty text-gray-500 sm:text-md"
+          >
             From planning to deployment, our services are designed to support
             your goals at every stage. We collaborate closely to deliver
             reliable, scalable solutions that solve real-world challenges and
