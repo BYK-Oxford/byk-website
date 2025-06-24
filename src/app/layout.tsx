@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "BYK Oxford",
   description: "BYK Oxford. Your Accounting solution",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
