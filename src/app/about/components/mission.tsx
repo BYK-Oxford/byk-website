@@ -15,7 +15,6 @@ export default function Mission() {
   const paragraph3Ref = useRef<HTMLParagraphElement | null>(null);
   const paragraph4Ref = useRef<HTMLParagraphElement | null>(null);
   const paragraph5Ref = useRef<HTMLParagraphElement | null>(null);
-  const paragraph6Ref = useRef<HTMLParagraphElement | null>(null);
 
   const statRefs = useRef<(HTMLDivElement | null)[]>([]);
   // ref for images array
@@ -165,24 +164,7 @@ export default function Mission() {
         }
       );
     }
-    if (paragraph6Ref.current) {
-      gsap.fromTo(
-        paragraph6Ref.current,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          delay: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: paragraph6Ref.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    }
+
     statRefs.current.forEach((el, index) => {
       if (el) {
         gsap.fromTo(
@@ -346,11 +328,6 @@ export default function Mission() {
               tailored to your business goals. Whether you are a startup seeking
               investor-ready forecasts or an established company optimizing your
               financial strategy, we bring clarity to complexity.
-            </p>
-            <p ref={paragraph6Ref} className="mt-8 text-base/7 text-gray-600">
-              At the core of our work is a commitment to precision,
-              transparency, and long-term partnership. We don’t just build
-              models—we help you build confidence in your numbers.
             </p>
           </div>
         </section>
