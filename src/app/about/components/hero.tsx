@@ -67,10 +67,9 @@ export default function Hero() {
               ref={paraRef}
               className="mx-auto mt-6 max-w-xl text-indigo-200 text-sm sm:text-base lg:text-lg"
             >
-              We’re a modern accounting firm helping businesses and individuals
-              stay ahead financially. With data-driven insights and tailored
-              strategies, we simplify the complex and give you clarity where it
-              matters most.
+              Precision, Transparency, and Long-Term Partnership. <br />
+              We don’t just build models—we help you build confidence in your
+              numbers.
             </p>
           </div>
         </div>
