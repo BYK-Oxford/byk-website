@@ -152,7 +152,7 @@ export default function Hero() {
                   ref={paragraphRef}
                   className="text-lg font-medium text-pretty text-gray-500 sm:max-w-md sm:text-lg/8 lg:max-w-none"
                 >
-                  Custom KPIs for What Matters Most to You. Our experts will
+                  Custom KPIs for what matters most to you. Our experts will
                   help your business to thrive with confidence
                 </p>
                 <Link
