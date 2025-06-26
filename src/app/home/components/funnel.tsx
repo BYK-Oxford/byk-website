@@ -10,44 +10,6 @@ export default function Funnel() {
   const paraRef = useRef<HTMLParagraphElement | null>(null);
   const funnelLayers = useRef<(HTMLDivElement | null)[]>([]);
 
-  const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
-  const [glowStyle, setGlowStyle] = useState<{
-    left: string;
-    width: string;
-  } | null>(null);
-
-  // const handleHighlightRandomLayer = () => {
-  //   const totalLayers = funnelLayers.current.length;
-  //   const randomIndex = Math.floor(Math.random() * totalLayers);
-
-  //   // Generate random left (0% to 70%) and width (20% to 60%)
-  //   const leftPercent = Math.floor(Math.random() * 70);
-  //   const widthPercent = 20 + Math.floor(Math.random() * 40);
-
-  //   setHighlightedIndex(randomIndex);
-  //   setGlowStyle({
-  //     left: `${leftPercent}%`,
-  //     width: `${widthPercent}%`,
-  //   });
-  // };
-
-  const handleHighlightRandomLayer = () => {
-    const totalLayers = funnelLayers.current.length;
-    const randomIndex = Math.floor(Math.random() * totalLayers);
-
-    // Randomly choose "left" or "right"
-    const isLeft = Math.random() < 0.5;
-
-    // Fixed width (e.g., 40%)
-    const widthPercent = 40;
-
-    setHighlightedIndex(randomIndex);
-    setGlowStyle({
-      left: isLeft ? "0%" : `${100 - widthPercent}%`,
-      width: `${widthPercent}%`,
-    });
-  };
-
   useEffect(() => {
     if (headingRef.current) {
       gsap.fromTo(
@@ -147,18 +109,6 @@ export default function Funnel() {
         </p>
       </div>
 
-      {/* Buttons */}
-      <div className="mx-auto max-w-xl text-center justify-center mb-10 flex gap-3 flex-wrap">
-        {["EMEA", "NORM", "APAC", "LATAM"].map((label, idx) => (
-          <button
-            key={idx}
-            onClick={handleHighlightRandomLayer}
-            className="w-fit rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500"
-          >
-            {label}
-          </button>
-        ))}
-      </div>
       {/* Funnel Layers */}
       <div className="flex flex-col items-center gap-[10px] transform scale-65 md:scale-100">
         {funnelData.map((layer, i) => (
@@ -167,9 +117,6 @@ export default function Funnel() {
             ref={(el) => {
               funnelLayers.current[i] = el;
             }}
-            className={`full-funnel ${
-              highlightedIndex === i ? "highlighted-layer" : ""
-            }`}
             style={{
               width: `${layer.width}px`,
               position: "relative",
@@ -178,9 +125,7 @@ export default function Funnel() {
           >
             {/* Top Cap */}
             <div
-              className={`funnel-top ${
-                highlightedIndex === i ? "highlighted-cap" : ""
-              }`}
+              className={"funnel-top "}
               style={{
                 height: "40px",
                 width: `${layer.width}px`,
@@ -196,46 +141,10 @@ export default function Funnel() {
 
             {/* Funnel Body */}
             <div
-              className={`funnel-layer ${
-                highlightedIndex === i ? "highlighted-body" : ""
-              } bg-indigo-500 flex justify-center items-center`}
+              className="funnel-layer bg-indigo-500 flex justify-center items-center"
               style={{ height: "120px", width: `${layer.width}px` }}
             >
               <div className="text-xl font-bold text-white">{layer.title}</div>
-
-              {highlightedIndex === i &&
-                glowStyle &&
-                (() => {
-                  // Parse left and width from glowStyle (e.g., "20%" => 20)
-                  const leftPercent = parseFloat(glowStyle.left);
-                  const widthPercent = parseFloat(glowStyle.width);
-                  const rightPercent = leftPercent + widthPercent;
-
-                  // Define threshold for "near edges" (e.g., 5%)
-                  const edgeThreshold = 0;
-
-                  // If glow is near left or right edge, no trapezoid
-                  const isNearLeftEdge = leftPercent <= edgeThreshold;
-                  const isNearRightEdge = rightPercent >= 100 - edgeThreshold;
-
-                  // Define trapezoid clip-path if not near edges
-                  const clipPathStyle =
-                    !isNearLeftEdge && !isNearRightEdge
-                      ? "polygon(0% 0%, 100% 0%, 90% 100%, 10% 100%)" // trapezoid with slant
-                      : undefined;
-
-                  return (
-                    <div
-                      className="absolute top-0 bottom-0 bg-indigo-300 opacity-30 pointer-events-none z-0"
-                      style={{
-                        left: glowStyle.left,
-                        width: glowStyle.width,
-                        height: "100%",
-                        clipPath: clipPathStyle,
-                      }}
-                    />
-                  );
-                })()}
             </div>
 
             {/* Bottom Cap */}
