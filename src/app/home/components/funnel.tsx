@@ -10,6 +10,7 @@ export default function Funnel() {
   const paraRef = useRef<HTMLParagraphElement | null>(null);
   const funnelLayers = useRef<(HTMLDivElement | null)[]>([]);
 
+  //new update
   useEffect(() => {
     if (headingRef.current) {
       gsap.fromTo(
