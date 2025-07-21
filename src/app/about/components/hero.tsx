@@ -60,7 +60,7 @@ export default function Hero() {
                 ref={subHeadingRef}
                 className="block text-indigo-200 mt-1 text-xl sm:text-2xl lg:text-3xl"
               >
-                Your financial Partner
+                Trusted Financial Partner for Business
               </span>
             </h1>
             <p
